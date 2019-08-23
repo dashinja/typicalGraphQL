@@ -1,4 +1,15 @@
 type User {
   id: ID! @id
   name: String!
+  # createdAt: DateTime! @createdAt
+  # updatedAt: DateTime! @updatedAt
+  grades: [Grades]!
+}
+
+type Grades {
+  id: ID! @id
+  grade: Int
+  # createdAt: DateTime! @createdAt
+  # updatedAt: DateTime! @updatedAt
+  owner: User!
 }
