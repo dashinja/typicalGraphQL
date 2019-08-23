@@ -16,7 +16,7 @@ export async function addGrade(gradeInput, id) {
       grade: gradeInput,
       owner: {
         connect: {
-          id: `cjznlbr200tbl0b5348yvrflo`,
+          id: id,
         },
       },
     })
@@ -25,4 +25,4 @@ export async function addGrade(gradeInput, id) {
   return `Grade ${await newGrade} added.`
 }
 
-console.log(addGrade(99, myId))
+// console.log(addGrade(99, myId))

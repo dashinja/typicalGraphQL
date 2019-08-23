@@ -16,7 +16,8 @@ const primaryUserInput: string = process.argv[3]
 const secondaryUserInput: string = process.argv[4]
 const myId = `cjznlbr200tbl0b5348yvrflo`
 
-console.log(addGrade(99, myId))
+// console.log(addGrade(99, myId))
+addGrade(99, myId).catch(e => console.error(e))
 ;(async () => {
   switch (command) {
     case `createUser`:
