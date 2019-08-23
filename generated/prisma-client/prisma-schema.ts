@@ -2,7 +2,7 @@
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-export const typeDefs = /* GraphQL */ `type AggregateGrades {
+export const typeDefs = /* GraphQL */ `type AggregateGrade {
   count: Int!
 }
 
@@ -14,52 +14,52 @@ type BatchPayload {
   count: Long!
 }
 
-type Grades {
+type Grade {
   id: ID!
-  grade: Int
-  owner: User!
+  grade: Float
+  owner: User
 }
 
-type GradesConnection {
+type GradeConnection {
   pageInfo: PageInfo!
-  edges: [GradesEdge]!
-  aggregate: AggregateGrades!
+  edges: [GradeEdge]!
+  aggregate: AggregateGrade!
 }
 
-input GradesCreateInput {
+input GradeCreateInput {
   id: ID
-  grade: Int
-  owner: UserCreateOneWithoutGradesInput!
+  grade: Float
+  owner: UserCreateOneWithoutGradeInput
 }
 
-input GradesCreateManyWithoutOwnerInput {
-  create: [GradesCreateWithoutOwnerInput!]
-  connect: [GradesWhereUniqueInput!]
+input GradeCreateManyWithoutOwnerInput {
+  create: [GradeCreateWithoutOwnerInput!]
+  connect: [GradeWhereUniqueInput!]
 }
 
-input GradesCreateWithoutOwnerInput {
+input GradeCreateWithoutOwnerInput {
   id: ID
-  grade: Int
+  grade: Float
 }
 
-type GradesEdge {
-  node: Grades!
+type GradeEdge {
+  node: Grade!
   cursor: String!
 }
 
-enum GradesOrderByInput {
+enum GradeOrderByInput {
   id_ASC
   id_DESC
   grade_ASC
   grade_DESC
 }
 
-type GradesPreviousValues {
+type GradePreviousValues {
   id: ID!
-  grade: Int
+  grade: Float
 }
 
-input GradesScalarWhereInput {
+input GradeScalarWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -74,83 +74,83 @@ input GradesScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  grade: Int
-  grade_not: Int
-  grade_in: [Int!]
-  grade_not_in: [Int!]
-  grade_lt: Int
-  grade_lte: Int
-  grade_gt: Int
-  grade_gte: Int
-  AND: [GradesScalarWhereInput!]
-  OR: [GradesScalarWhereInput!]
-  NOT: [GradesScalarWhereInput!]
+  grade: Float
+  grade_not: Float
+  grade_in: [Float!]
+  grade_not_in: [Float!]
+  grade_lt: Float
+  grade_lte: Float
+  grade_gt: Float
+  grade_gte: Float
+  AND: [GradeScalarWhereInput!]
+  OR: [GradeScalarWhereInput!]
+  NOT: [GradeScalarWhereInput!]
 }
 
-type GradesSubscriptionPayload {
+type GradeSubscriptionPayload {
   mutation: MutationType!
-  node: Grades
+  node: Grade
   updatedFields: [String!]
-  previousValues: GradesPreviousValues
+  previousValues: GradePreviousValues
 }
 
-input GradesSubscriptionWhereInput {
+input GradeSubscriptionWhereInput {
   mutation_in: [MutationType!]
   updatedFields_contains: String
   updatedFields_contains_every: [String!]
   updatedFields_contains_some: [String!]
-  node: GradesWhereInput
-  AND: [GradesSubscriptionWhereInput!]
-  OR: [GradesSubscriptionWhereInput!]
-  NOT: [GradesSubscriptionWhereInput!]
+  node: GradeWhereInput
+  AND: [GradeSubscriptionWhereInput!]
+  OR: [GradeSubscriptionWhereInput!]
+  NOT: [GradeSubscriptionWhereInput!]
 }
 
-input GradesUpdateInput {
-  grade: Int
-  owner: UserUpdateOneRequiredWithoutGradesInput
+input GradeUpdateInput {
+  grade: Float
+  owner: UserUpdateOneWithoutGradeInput
 }
 
-input GradesUpdateManyDataInput {
-  grade: Int
+input GradeUpdateManyDataInput {
+  grade: Float
 }
 
-input GradesUpdateManyMutationInput {
-  grade: Int
+input GradeUpdateManyMutationInput {
+  grade: Float
 }
 
-input GradesUpdateManyWithoutOwnerInput {
-  create: [GradesCreateWithoutOwnerInput!]
-  delete: [GradesWhereUniqueInput!]
-  connect: [GradesWhereUniqueInput!]
-  set: [GradesWhereUniqueInput!]
-  disconnect: [GradesWhereUniqueInput!]
-  update: [GradesUpdateWithWhereUniqueWithoutOwnerInput!]
-  upsert: [GradesUpsertWithWhereUniqueWithoutOwnerInput!]
-  deleteMany: [GradesScalarWhereInput!]
-  updateMany: [GradesUpdateManyWithWhereNestedInput!]
+input GradeUpdateManyWithoutOwnerInput {
+  create: [GradeCreateWithoutOwnerInput!]
+  delete: [GradeWhereUniqueInput!]
+  connect: [GradeWhereUniqueInput!]
+  set: [GradeWhereUniqueInput!]
+  disconnect: [GradeWhereUniqueInput!]
+  update: [GradeUpdateWithWhereUniqueWithoutOwnerInput!]
+  upsert: [GradeUpsertWithWhereUniqueWithoutOwnerInput!]
+  deleteMany: [GradeScalarWhereInput!]
+  updateMany: [GradeUpdateManyWithWhereNestedInput!]
 }
 
-input GradesUpdateManyWithWhereNestedInput {
-  where: GradesScalarWhereInput!
-  data: GradesUpdateManyDataInput!
+input GradeUpdateManyWithWhereNestedInput {
+  where: GradeScalarWhereInput!
+  data: GradeUpdateManyDataInput!
 }
 
-input GradesUpdateWithoutOwnerDataInput {
-  grade: Int
+input GradeUpdateWithoutOwnerDataInput {
+  grade: Float
 }
 
-input GradesUpdateWithWhereUniqueWithoutOwnerInput {
-  where: GradesWhereUniqueInput!
-  data: GradesUpdateWithoutOwnerDataInput!
+input GradeUpdateWithWhereUniqueWithoutOwnerInput {
+  where: GradeWhereUniqueInput!
+  data: GradeUpdateWithoutOwnerDataInput!
 }
 
-input GradesUpsertWithWhereUniqueWithoutOwnerInput {
-  where: GradesWhereUniqueInput!
-  update: GradesUpdateWithoutOwnerDataInput!
-  create: GradesCreateWithoutOwnerInput!
+input GradeUpsertWithWhereUniqueWithoutOwnerInput {
+  where: GradeWhereUniqueInput!
+  update: GradeUpdateWithoutOwnerDataInput!
+  create: GradeCreateWithoutOwnerInput!
 }
 
-input GradesWhereInput {
+input GradeWhereInput {
   id: ID
   id_not: ID
   id_in: [ID!]
@@ -165,33 +165,33 @@ input GradesWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  grade: Int
-  grade_not: Int
-  grade_in: [Int!]
-  grade_not_in: [Int!]
-  grade_lt: Int
-  grade_lte: Int
-  grade_gt: Int
-  grade_gte: Int
+  grade: Float
+  grade_not: Float
+  grade_in: [Float!]
+  grade_not_in: [Float!]
+  grade_lt: Float
+  grade_lte: Float
+  grade_gt: Float
+  grade_gte: Float
   owner: UserWhereInput
-  AND: [GradesWhereInput!]
-  OR: [GradesWhereInput!]
-  NOT: [GradesWhereInput!]
+  AND: [GradeWhereInput!]
+  OR: [GradeWhereInput!]
+  NOT: [GradeWhereInput!]
 }
 
-input GradesWhereUniqueInput {
+input GradeWhereUniqueInput {
   id: ID
 }
 
 scalar Long
 
 type Mutation {
-  createGrades(data: GradesCreateInput!): Grades!
-  updateGrades(data: GradesUpdateInput!, where: GradesWhereUniqueInput!): Grades
-  updateManyGradeses(data: GradesUpdateManyMutationInput!, where: GradesWhereInput): BatchPayload!
-  upsertGrades(where: GradesWhereUniqueInput!, create: GradesCreateInput!, update: GradesUpdateInput!): Grades!
-  deleteGrades(where: GradesWhereUniqueInput!): Grades
-  deleteManyGradeses(where: GradesWhereInput): BatchPayload!
+  createGrade(data: GradeCreateInput!): Grade!
+  updateGrade(data: GradeUpdateInput!, where: GradeWhereUniqueInput!): Grade
+  updateManyGrades(data: GradeUpdateManyMutationInput!, where: GradeWhereInput): BatchPayload!
+  upsertGrade(where: GradeWhereUniqueInput!, create: GradeCreateInput!, update: GradeUpdateInput!): Grade!
+  deleteGrade(where: GradeWhereUniqueInput!): Grade
+  deleteManyGrades(where: GradeWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -218,9 +218,9 @@ type PageInfo {
 }
 
 type Query {
-  grades(where: GradesWhereUniqueInput!): Grades
-  gradeses(where: GradesWhereInput, orderBy: GradesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Grades]!
-  gradesesConnection(where: GradesWhereInput, orderBy: GradesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): GradesConnection!
+  grade(where: GradeWhereUniqueInput!): Grade
+  grades(where: GradeWhereInput, orderBy: GradeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Grade]!
+  gradesConnection(where: GradeWhereInput, orderBy: GradeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): GradeConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
@@ -228,14 +228,14 @@ type Query {
 }
 
 type Subscription {
-  grades(where: GradesSubscriptionWhereInput): GradesSubscriptionPayload
+  grade(where: GradeSubscriptionWhereInput): GradeSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
 type User {
   id: ID!
   name: String!
-  grades(where: GradesWhereInput, orderBy: GradesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Grades!]
+  grade(where: GradeWhereInput, orderBy: GradeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Grade!]
 }
 
 type UserConnection {
@@ -247,15 +247,15 @@ type UserConnection {
 input UserCreateInput {
   id: ID
   name: String!
-  grades: GradesCreateManyWithoutOwnerInput
+  grade: GradeCreateManyWithoutOwnerInput
 }
 
-input UserCreateOneWithoutGradesInput {
-  create: UserCreateWithoutGradesInput
+input UserCreateOneWithoutGradeInput {
+  create: UserCreateWithoutGradeInput
   connect: UserWhereUniqueInput
 }
 
-input UserCreateWithoutGradesInput {
+input UserCreateWithoutGradeInput {
   id: ID
   name: String!
 }
@@ -297,27 +297,29 @@ input UserSubscriptionWhereInput {
 
 input UserUpdateInput {
   name: String
-  grades: GradesUpdateManyWithoutOwnerInput
+  grade: GradeUpdateManyWithoutOwnerInput
 }
 
 input UserUpdateManyMutationInput {
   name: String
 }
 
-input UserUpdateOneRequiredWithoutGradesInput {
-  create: UserCreateWithoutGradesInput
-  update: UserUpdateWithoutGradesDataInput
-  upsert: UserUpsertWithoutGradesInput
+input UserUpdateOneWithoutGradeInput {
+  create: UserCreateWithoutGradeInput
+  update: UserUpdateWithoutGradeDataInput
+  upsert: UserUpsertWithoutGradeInput
+  delete: Boolean
+  disconnect: Boolean
   connect: UserWhereUniqueInput
 }
 
-input UserUpdateWithoutGradesDataInput {
+input UserUpdateWithoutGradeDataInput {
   name: String
 }
 
-input UserUpsertWithoutGradesInput {
-  update: UserUpdateWithoutGradesDataInput!
-  create: UserCreateWithoutGradesInput!
+input UserUpsertWithoutGradeInput {
+  update: UserUpdateWithoutGradeDataInput!
+  create: UserCreateWithoutGradeInput!
 }
 
 input UserWhereInput {
@@ -349,9 +351,9 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
-  grades_every: GradesWhereInput
-  grades_some: GradesWhereInput
-  grades_none: GradesWhereInput
+  grade_every: GradeWhereInput
+  grade_some: GradeWhereInput
+  grade_none: GradeWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

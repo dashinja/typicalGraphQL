@@ -3,13 +3,13 @@ type User {
   name: String!
   # createdAt: DateTime! @createdAt
   # updatedAt: DateTime! @updatedAt
-  grades: [Grades]!
+  grade: [Grade]
 }
 
-type Grades {
+type Grade {
   id: ID! @id
-  grade: Int
+  grade: Float
   # createdAt: DateTime! @createdAt
   # updatedAt: DateTime! @updatedAt
-  owner: User!
+  owner: User
 }

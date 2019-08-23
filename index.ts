@@ -9,9 +9,14 @@ import {
   deleteAll,
 } from './userFunctions'
 
+import { addGrade } from './gradeFunctions'
+
 const command: string = process.argv[2]
 const primaryUserInput: string = process.argv[3]
 const secondaryUserInput: string = process.argv[4]
+const myId = `cjznlbr200tbl0b5348yvrflo`
+
+console.log(addGrade(99, myId))
 ;(async () => {
   switch (command) {
     case `createUser`:

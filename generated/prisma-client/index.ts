@@ -16,7 +16,7 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
-  grades: (where?: GradesWhereInput) => Promise<boolean>;
+  grade: (where?: GradeWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
 }
 
@@ -39,25 +39,25 @@ export interface Prisma {
    * Queries
    */
 
-  grades: (where: GradesWhereUniqueInput) => GradesNullablePromise;
-  gradeses: (args?: {
-    where?: GradesWhereInput;
-    orderBy?: GradesOrderByInput;
+  grade: (where: GradeWhereUniqueInput) => GradeNullablePromise;
+  grades: (args?: {
+    where?: GradeWhereInput;
+    orderBy?: GradeOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<Grades>;
-  gradesesConnection: (args?: {
-    where?: GradesWhereInput;
-    orderBy?: GradesOrderByInput;
+  }) => FragmentableArray<Grade>;
+  gradesConnection: (args?: {
+    where?: GradeWhereInput;
+    orderBy?: GradeOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => GradesConnectionPromise;
+  }) => GradeConnectionPromise;
   user: (where: UserWhereUniqueInput) => UserNullablePromise;
   users: (args?: {
     where?: UserWhereInput;
@@ -83,22 +83,22 @@ export interface Prisma {
    * Mutations
    */
 
-  createGrades: (data: GradesCreateInput) => GradesPromise;
-  updateGrades: (args: {
-    data: GradesUpdateInput;
-    where: GradesWhereUniqueInput;
-  }) => GradesPromise;
-  updateManyGradeses: (args: {
-    data: GradesUpdateManyMutationInput;
-    where?: GradesWhereInput;
+  createGrade: (data: GradeCreateInput) => GradePromise;
+  updateGrade: (args: {
+    data: GradeUpdateInput;
+    where: GradeWhereUniqueInput;
+  }) => GradePromise;
+  updateManyGrades: (args: {
+    data: GradeUpdateManyMutationInput;
+    where?: GradeWhereInput;
   }) => BatchPayloadPromise;
-  upsertGrades: (args: {
-    where: GradesWhereUniqueInput;
-    create: GradesCreateInput;
-    update: GradesUpdateInput;
-  }) => GradesPromise;
-  deleteGrades: (where: GradesWhereUniqueInput) => GradesPromise;
-  deleteManyGradeses: (where?: GradesWhereInput) => BatchPayloadPromise;
+  upsertGrade: (args: {
+    where: GradeWhereUniqueInput;
+    create: GradeCreateInput;
+    update: GradeUpdateInput;
+  }) => GradePromise;
+  deleteGrade: (where: GradeWhereUniqueInput) => GradePromise;
+  deleteManyGrades: (where?: GradeWhereInput) => BatchPayloadPromise;
   createUser: (data: UserCreateInput) => UserPromise;
   updateUser: (args: {
     data: UserUpdateInput;
@@ -124,9 +124,9 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  grades: (
-    where?: GradesSubscriptionWhereInput
-  ) => GradesSubscriptionPayloadSubscription;
+  grade: (
+    where?: GradeSubscriptionWhereInput
+  ) => GradeSubscriptionPayloadSubscription;
   user: (
     where?: UserSubscriptionWhereInput
   ) => UserSubscriptionPayloadSubscription;
@@ -140,7 +140,7 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type GradesOrderByInput =
+export type GradeOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "grade_ASC"
@@ -150,48 +150,53 @@ export type UserOrderByInput = "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface UserUpdateOneRequiredWithoutGradesInput {
-  create?: Maybe<UserCreateWithoutGradesInput>;
-  update?: Maybe<UserUpdateWithoutGradesDataInput>;
-  upsert?: Maybe<UserUpsertWithoutGradesInput>;
+export interface UserUpdateOneWithoutGradeInput {
+  create?: Maybe<UserCreateWithoutGradeInput>;
+  update?: Maybe<UserUpdateWithoutGradeDataInput>;
+  upsert?: Maybe<UserUpsertWithoutGradeInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
   connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export type GradesWhereUniqueInput = AtLeastOne<{
+export type GradeWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface GradesUpdateManyWithoutOwnerInput {
-  create?: Maybe<
-    GradesCreateWithoutOwnerInput[] | GradesCreateWithoutOwnerInput
-  >;
-  delete?: Maybe<GradesWhereUniqueInput[] | GradesWhereUniqueInput>;
-  connect?: Maybe<GradesWhereUniqueInput[] | GradesWhereUniqueInput>;
-  set?: Maybe<GradesWhereUniqueInput[] | GradesWhereUniqueInput>;
-  disconnect?: Maybe<GradesWhereUniqueInput[] | GradesWhereUniqueInput>;
+export interface GradeUpdateManyWithoutOwnerInput {
+  create?: Maybe<GradeCreateWithoutOwnerInput[] | GradeCreateWithoutOwnerInput>;
+  delete?: Maybe<GradeWhereUniqueInput[] | GradeWhereUniqueInput>;
+  connect?: Maybe<GradeWhereUniqueInput[] | GradeWhereUniqueInput>;
+  set?: Maybe<GradeWhereUniqueInput[] | GradeWhereUniqueInput>;
+  disconnect?: Maybe<GradeWhereUniqueInput[] | GradeWhereUniqueInput>;
   update?: Maybe<
-    | GradesUpdateWithWhereUniqueWithoutOwnerInput[]
-    | GradesUpdateWithWhereUniqueWithoutOwnerInput
+    | GradeUpdateWithWhereUniqueWithoutOwnerInput[]
+    | GradeUpdateWithWhereUniqueWithoutOwnerInput
   >;
   upsert?: Maybe<
-    | GradesUpsertWithWhereUniqueWithoutOwnerInput[]
-    | GradesUpsertWithWhereUniqueWithoutOwnerInput
+    | GradeUpsertWithWhereUniqueWithoutOwnerInput[]
+    | GradeUpsertWithWhereUniqueWithoutOwnerInput
   >;
-  deleteMany?: Maybe<GradesScalarWhereInput[] | GradesScalarWhereInput>;
+  deleteMany?: Maybe<GradeScalarWhereInput[] | GradeScalarWhereInput>;
   updateMany?: Maybe<
-    | GradesUpdateManyWithWhereNestedInput[]
-    | GradesUpdateManyWithWhereNestedInput
+    GradeUpdateManyWithWhereNestedInput[] | GradeUpdateManyWithWhereNestedInput
   >;
 }
 
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
   name: String;
-  grades?: Maybe<GradesCreateManyWithoutOwnerInput>;
+  grade?: Maybe<GradeCreateManyWithoutOwnerInput>;
 }
 
-export interface GradesUpdateManyMutationInput {
-  grade?: Maybe<Int>;
+export interface UserUpdateInput {
+  name?: Maybe<String>;
+  grade?: Maybe<GradeUpdateManyWithoutOwnerInput>;
+}
+
+export interface UserUpsertWithoutGradeInput {
+  update: UserUpdateWithoutGradeDataInput;
+  create: UserCreateWithoutGradeInput;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -205,47 +210,44 @@ export interface UserSubscriptionWhereInput {
   NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
 }
 
-export interface GradesCreateInput {
-  id?: Maybe<ID_Input>;
-  grade?: Maybe<Int>;
-  owner: UserCreateOneWithoutGradesInput;
-}
-
 export interface UserUpdateManyMutationInput {
   name?: Maybe<String>;
 }
 
-export interface UserCreateOneWithoutGradesInput {
-  create?: Maybe<UserCreateWithoutGradesInput>;
+export interface GradeCreateInput {
+  id?: Maybe<ID_Input>;
+  grade?: Maybe<Float>;
+  owner?: Maybe<UserCreateOneWithoutGradeInput>;
+}
+
+export interface GradeUpdateManyWithWhereNestedInput {
+  where: GradeScalarWhereInput;
+  data: GradeUpdateManyDataInput;
+}
+
+export interface UserCreateOneWithoutGradeInput {
+  create?: Maybe<UserCreateWithoutGradeInput>;
   connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface GradesUpdateManyWithWhereNestedInput {
-  where: GradesScalarWhereInput;
-  data: GradesUpdateManyDataInput;
+export interface GradeUpsertWithWhereUniqueWithoutOwnerInput {
+  where: GradeWhereUniqueInput;
+  update: GradeUpdateWithoutOwnerDataInput;
+  create: GradeCreateWithoutOwnerInput;
 }
 
-export interface UserCreateWithoutGradesInput {
+export interface UserCreateWithoutGradeInput {
   id?: Maybe<ID_Input>;
   name: String;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface GradesUpdateInput {
-  grade?: Maybe<Int>;
-  owner?: Maybe<UserUpdateOneRequiredWithoutGradesInput>;
+export interface GradeUpdateWithoutOwnerDataInput {
+  grade?: Maybe<Float>;
 }
 
-export interface GradesUpdateWithoutOwnerDataInput {
-  grade?: Maybe<Int>;
-}
-
-export interface UserUpdateInput {
-  name?: Maybe<String>;
-  grades?: Maybe<GradesUpdateManyWithoutOwnerInput>;
+export interface GradeUpdateInput {
+  grade?: Maybe<Float>;
+  owner?: Maybe<UserUpdateOneWithoutGradeInput>;
 }
 
 export interface UserWhereInput {
@@ -277,35 +279,66 @@ export interface UserWhereInput {
   name_not_starts_with?: Maybe<String>;
   name_ends_with?: Maybe<String>;
   name_not_ends_with?: Maybe<String>;
-  grades_every?: Maybe<GradesWhereInput>;
-  grades_some?: Maybe<GradesWhereInput>;
-  grades_none?: Maybe<GradesWhereInput>;
+  grade_every?: Maybe<GradeWhereInput>;
+  grade_some?: Maybe<GradeWhereInput>;
+  grade_none?: Maybe<GradeWhereInput>;
   AND?: Maybe<UserWhereInput[] | UserWhereInput>;
   OR?: Maybe<UserWhereInput[] | UserWhereInput>;
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
-export interface UserUpdateWithoutGradesDataInput {
+export interface GradeCreateWithoutOwnerInput {
+  id?: Maybe<ID_Input>;
+  grade?: Maybe<Float>;
+}
+
+export interface GradeUpdateManyDataInput {
+  grade?: Maybe<Float>;
+}
+
+export interface GradeCreateManyWithoutOwnerInput {
+  create?: Maybe<GradeCreateWithoutOwnerInput[] | GradeCreateWithoutOwnerInput>;
+  connect?: Maybe<GradeWhereUniqueInput[] | GradeWhereUniqueInput>;
+}
+
+export interface GradeUpdateManyMutationInput {
+  grade?: Maybe<Float>;
+}
+
+export interface GradeWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  grade?: Maybe<Float>;
+  grade_not?: Maybe<Float>;
+  grade_in?: Maybe<Float[] | Float>;
+  grade_not_in?: Maybe<Float[] | Float>;
+  grade_lt?: Maybe<Float>;
+  grade_lte?: Maybe<Float>;
+  grade_gt?: Maybe<Float>;
+  grade_gte?: Maybe<Float>;
+  owner?: Maybe<UserWhereInput>;
+  AND?: Maybe<GradeWhereInput[] | GradeWhereInput>;
+  OR?: Maybe<GradeWhereInput[] | GradeWhereInput>;
+  NOT?: Maybe<GradeWhereInput[] | GradeWhereInput>;
+}
+
+export interface UserUpdateWithoutGradeDataInput {
   name?: Maybe<String>;
 }
 
-export interface GradesUpdateManyDataInput {
-  grade?: Maybe<Int>;
-}
-
-export interface GradesCreateManyWithoutOwnerInput {
-  create?: Maybe<
-    GradesCreateWithoutOwnerInput[] | GradesCreateWithoutOwnerInput
-  >;
-  connect?: Maybe<GradesWhereUniqueInput[] | GradesWhereUniqueInput>;
-}
-
-export interface GradesCreateWithoutOwnerInput {
-  id?: Maybe<ID_Input>;
-  grade?: Maybe<Int>;
-}
-
-export interface GradesWhereInput {
+export interface GradeScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -320,74 +353,38 @@ export interface GradesWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  grade?: Maybe<Int>;
-  grade_not?: Maybe<Int>;
-  grade_in?: Maybe<Int[] | Int>;
-  grade_not_in?: Maybe<Int[] | Int>;
-  grade_lt?: Maybe<Int>;
-  grade_lte?: Maybe<Int>;
-  grade_gt?: Maybe<Int>;
-  grade_gte?: Maybe<Int>;
-  owner?: Maybe<UserWhereInput>;
-  AND?: Maybe<GradesWhereInput[] | GradesWhereInput>;
-  OR?: Maybe<GradesWhereInput[] | GradesWhereInput>;
-  NOT?: Maybe<GradesWhereInput[] | GradesWhereInput>;
+  grade?: Maybe<Float>;
+  grade_not?: Maybe<Float>;
+  grade_in?: Maybe<Float[] | Float>;
+  grade_not_in?: Maybe<Float[] | Float>;
+  grade_lt?: Maybe<Float>;
+  grade_lte?: Maybe<Float>;
+  grade_gt?: Maybe<Float>;
+  grade_gte?: Maybe<Float>;
+  AND?: Maybe<GradeScalarWhereInput[] | GradeScalarWhereInput>;
+  OR?: Maybe<GradeScalarWhereInput[] | GradeScalarWhereInput>;
+  NOT?: Maybe<GradeScalarWhereInput[] | GradeScalarWhereInput>;
 }
 
-export interface UserUpsertWithoutGradesInput {
-  update: UserUpdateWithoutGradesDataInput;
-  create: UserCreateWithoutGradesInput;
-}
-
-export interface GradesScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  grade?: Maybe<Int>;
-  grade_not?: Maybe<Int>;
-  grade_in?: Maybe<Int[] | Int>;
-  grade_not_in?: Maybe<Int[] | Int>;
-  grade_lt?: Maybe<Int>;
-  grade_lte?: Maybe<Int>;
-  grade_gt?: Maybe<Int>;
-  grade_gte?: Maybe<Int>;
-  AND?: Maybe<GradesScalarWhereInput[] | GradesScalarWhereInput>;
-  OR?: Maybe<GradesScalarWhereInput[] | GradesScalarWhereInput>;
-  NOT?: Maybe<GradesScalarWhereInput[] | GradesScalarWhereInput>;
-}
-
-export interface GradesSubscriptionWhereInput {
+export interface GradeSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<GradesWhereInput>;
-  AND?: Maybe<GradesSubscriptionWhereInput[] | GradesSubscriptionWhereInput>;
-  OR?: Maybe<GradesSubscriptionWhereInput[] | GradesSubscriptionWhereInput>;
-  NOT?: Maybe<GradesSubscriptionWhereInput[] | GradesSubscriptionWhereInput>;
+  node?: Maybe<GradeWhereInput>;
+  AND?: Maybe<GradeSubscriptionWhereInput[] | GradeSubscriptionWhereInput>;
+  OR?: Maybe<GradeSubscriptionWhereInput[] | GradeSubscriptionWhereInput>;
+  NOT?: Maybe<GradeSubscriptionWhereInput[] | GradeSubscriptionWhereInput>;
 }
 
-export interface GradesUpdateWithWhereUniqueWithoutOwnerInput {
-  where: GradesWhereUniqueInput;
-  data: GradesUpdateWithoutOwnerDataInput;
+export interface GradeUpdateWithWhereUniqueWithoutOwnerInput {
+  where: GradeWhereUniqueInput;
+  data: GradeUpdateWithoutOwnerDataInput;
 }
 
-export interface GradesUpsertWithWhereUniqueWithoutOwnerInput {
-  where: GradesWhereUniqueInput;
-  update: GradesUpdateWithoutOwnerDataInput;
-  create: GradesCreateWithoutOwnerInput;
-}
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface NodeNode {
   id: ID_Output;
@@ -412,40 +409,46 @@ export interface UserPreviousValuesSubscription
   name: () => Promise<AsyncIterator<String>>;
 }
 
-export interface GradesEdge {
-  node: Grades;
+export interface GradeEdge {
+  node: Grade;
   cursor: String;
 }
 
-export interface GradesEdgePromise extends Promise<GradesEdge>, Fragmentable {
-  node: <T = GradesPromise>() => T;
+export interface GradeEdgePromise extends Promise<GradeEdge>, Fragmentable {
+  node: <T = GradePromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface GradesEdgeSubscription
-  extends Promise<AsyncIterator<GradesEdge>>,
+export interface GradeEdgeSubscription
+  extends Promise<AsyncIterator<GradeEdge>>,
     Fragmentable {
-  node: <T = GradesSubscription>() => T;
+  node: <T = GradeSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface GradesPreviousValues {
-  id: ID_Output;
-  grade?: Int;
+export interface GradeSubscriptionPayload {
+  mutation: MutationType;
+  node: Grade;
+  updatedFields: String[];
+  previousValues: GradePreviousValues;
 }
 
-export interface GradesPreviousValuesPromise
-  extends Promise<GradesPreviousValues>,
+export interface GradeSubscriptionPayloadPromise
+  extends Promise<GradeSubscriptionPayload>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  grade: () => Promise<Int>;
+  mutation: () => Promise<MutationType>;
+  node: <T = GradePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = GradePreviousValuesPromise>() => T;
 }
 
-export interface GradesPreviousValuesSubscription
-  extends Promise<AsyncIterator<GradesPreviousValues>>,
+export interface GradeSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<GradeSubscriptionPayload>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  grade: () => Promise<AsyncIterator<Int>>;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = GradeSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = GradePreviousValuesSubscription>() => T;
 }
 
 export interface BatchPayload {
@@ -480,77 +483,71 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface GradesSubscriptionPayload {
-  mutation: MutationType;
-  node: Grades;
-  updatedFields: String[];
-  previousValues: GradesPreviousValues;
-}
-
-export interface GradesSubscriptionPayloadPromise
-  extends Promise<GradesSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = GradesPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = GradesPreviousValuesPromise>() => T;
-}
-
-export interface GradesSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<GradesSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = GradesSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = GradesPreviousValuesSubscription>() => T;
-}
-
-export interface Grades {
+export interface Grade {
   id: ID_Output;
-  grade?: Int;
+  grade?: Float;
 }
 
-export interface GradesPromise extends Promise<Grades>, Fragmentable {
+export interface GradePromise extends Promise<Grade>, Fragmentable {
   id: () => Promise<ID_Output>;
-  grade: () => Promise<Int>;
+  grade: () => Promise<Float>;
   owner: <T = UserPromise>() => T;
 }
 
-export interface GradesSubscription
-  extends Promise<AsyncIterator<Grades>>,
+export interface GradeSubscription
+  extends Promise<AsyncIterator<Grade>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  grade: () => Promise<AsyncIterator<Int>>;
+  grade: () => Promise<AsyncIterator<Float>>;
   owner: <T = UserSubscription>() => T;
 }
 
-export interface GradesNullablePromise
-  extends Promise<Grades | null>,
+export interface GradeNullablePromise
+  extends Promise<Grade | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  grade: () => Promise<Int>;
+  grade: () => Promise<Float>;
   owner: <T = UserPromise>() => T;
 }
 
-export interface GradesConnection {
-  pageInfo: PageInfo;
-  edges: GradesEdge[];
+export interface GradePreviousValues {
+  id: ID_Output;
+  grade?: Float;
 }
 
-export interface GradesConnectionPromise
-  extends Promise<GradesConnection>,
+export interface GradePreviousValuesPromise
+  extends Promise<GradePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  grade: () => Promise<Float>;
+}
+
+export interface GradePreviousValuesSubscription
+  extends Promise<AsyncIterator<GradePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  grade: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface GradeConnection {
+  pageInfo: PageInfo;
+  edges: GradeEdge[];
+}
+
+export interface GradeConnectionPromise
+  extends Promise<GradeConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<GradesEdge>>() => T;
-  aggregate: <T = AggregateGradesPromise>() => T;
+  edges: <T = FragmentableArray<GradeEdge>>() => T;
+  aggregate: <T = AggregateGradePromise>() => T;
 }
 
-export interface GradesConnectionSubscription
-  extends Promise<AsyncIterator<GradesConnection>>,
+export interface GradeConnectionSubscription
+  extends Promise<AsyncIterator<GradeConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<GradesEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateGradesSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<GradeEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateGradeSubscription>() => T;
 }
 
 export interface PageInfo {
@@ -618,18 +615,18 @@ export interface UserSubscriptionPayloadSubscription
   previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
-export interface AggregateGrades {
+export interface AggregateGrade {
   count: Int;
 }
 
-export interface AggregateGradesPromise
-  extends Promise<AggregateGrades>,
+export interface AggregateGradePromise
+  extends Promise<AggregateGrade>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateGradesSubscription
-  extends Promise<AsyncIterator<AggregateGrades>>,
+export interface AggregateGradeSubscription
+  extends Promise<AsyncIterator<AggregateGrade>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -642,9 +639,9 @@ export interface User {
 export interface UserPromise extends Promise<User>, Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
-  grades: <T = FragmentableArray<Grades>>(args?: {
-    where?: GradesWhereInput;
-    orderBy?: GradesOrderByInput;
+  grade: <T = FragmentableArray<Grade>>(args?: {
+    where?: GradeWhereInput;
+    orderBy?: GradeOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -658,9 +655,9 @@ export interface UserSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
-  grades: <T = Promise<AsyncIterator<GradesSubscription>>>(args?: {
-    where?: GradesWhereInput;
-    orderBy?: GradesOrderByInput;
+  grade: <T = Promise<AsyncIterator<GradeSubscription>>>(args?: {
+    where?: GradeWhereInput;
+    orderBy?: GradeOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -674,9 +671,9 @@ export interface UserNullablePromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
-  grades: <T = FragmentableArray<Grades>>(args?: {
-    where?: GradesWhereInput;
-    orderBy?: GradesOrderByInput;
+  grade: <T = FragmentableArray<Grade>>(args?: {
+    where?: GradeWhereInput;
+    orderBy?: GradeOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -725,6 +722,11 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+*/
+export type Float = number;
+
+/*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
 */
 export type Int = number;
@@ -739,7 +741,7 @@ export const models: Model[] = [
     embedded: false
   },
   {
-    name: "Grades",
+    name: "Grade",
     embedded: false
   }
 ];
