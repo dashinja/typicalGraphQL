@@ -1,0 +1,6 @@
+endpoint: https://eu1.prisma.sh/byron-miller-157f0a/hello-world/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma-client/
