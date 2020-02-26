@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^13.7.6",
+    "graphql": "^14.6.0",
     "prisma-client-lib": "^1.34.6"
   },
   "devDependencies": {
